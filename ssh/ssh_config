@@ -1,0 +1,3 @@
+PermitRootLogin no
+Port 2222
+Banner /etc/ssh/sshd-banner
