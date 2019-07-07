@@ -1,0 +1,12 @@
+systemctl start firewalld
+systemctl enable firewalld
+#firewall-cmd --zone=public --list-sources
+#firewall-cmd --get-services
+firewall-cmd --zone=public --add-source=81.22.0.0/17
+firewall-cmd --zone=public --add-port=22/tcp
+firewall-cmd --zone=public --remove-service=ssh
+firewall-cmd --zone=public --add-service=https
+firewall-cmd --zone=public --add-service=http
+firewall-cmd --zone=public --add-service=smtp
+firewall-cmd --zone=public --add-service=smtps
+firewall-cmd --runtime-to-permanent
