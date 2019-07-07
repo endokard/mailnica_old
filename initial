@@ -3,19 +3,3 @@ yum update
 #
 useradd XXXX
 passwd XXX new_pass
-#
-yum install postfix
-systemctl stop sendmail
-systemctl disable sendmail
-systemctl enable postfix
-#
-cp main.cf main.cf.bak
-echo "" > main.cf
-postconf myhostname = mx.mailnica.com
-postconf mydomain = mailnica.com
-postconf smtpd_banner = $myhostname ESMTP
-postconf myorigin = $mydomain
-postconf inet_interfaces = all
-postconf inet_protocols = all
-postconf mydestination = $myhostname, localhost.$mydomain, localhost, $mydomain
-postconf mynetworks = 192.168.1.0/24, 127.0.0.0/8
