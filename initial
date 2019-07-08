@@ -38,5 +38,7 @@ FLUSH PRIVILEGES;
 
 #postfix-admin
  mkdir /var/www/admin
+ wget -O /var/www/admin/postfixadmin.tgz https://github.com/postfixadmin/postfixadmin/archive/postfixadmin-3.2.tar.gz
+ tar -zxvf /var/www/admin/postfixadmin.tgz -C /var/www/admin --strip-components=1
 
 #certbot
