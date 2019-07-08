@@ -6,6 +6,9 @@ passwd XXX new_pass
 
 #firewall
 
+#ensyre chrony is started
+#systemctl status -l chronyd
+
 #apache
 yum -y install httpd httpd-tools mod_ssl
 systemctl enable httpd
