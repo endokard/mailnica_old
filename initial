@@ -23,7 +23,20 @@ yum install php php-mcrypt php-cli php-gd php-curl php-mysql php-ldap php-zip ph
 #php-FM
 
 #databse
+yum install mariadb mariadb-server -y
+systemctl start mariadb
+systemctl enable mariadb
+mysql_secure_installation
 
-#postfix
+#create table postfixadmin
+mysql -u root -p
+
+CREATE DATABASE postfixadmin;
+GRANT ALL PRIVILEGES ON postfixadmin.* TO 'postfixadmin'@'localhost' IDENTIFIED BY 'my_password';
+FLUSH PRIVILEGES;
+\q
+
+#postfix-admin
+ mkdir /var/www/admin
 
 #certbot
