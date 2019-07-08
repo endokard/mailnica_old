@@ -12,5 +12,10 @@ wget -O /var/www/admin/postfixadmin.tgz https://github.com/postfixadmin/postfixa
 tar -zxvf /var/www/admin/postfixadmin.tgz -C /var/www/admin --strip-components=1
 mkdir -p /var/www/admin/templates_c
 chown -R apache /var/www/admin/templates_c
-##create /srv/postfixadmin/config.local.php
-##configure postfix admin via web
+##create /var/www/admin/config.local.php
+##configure postfix admin via web -> http://server_name/admin/public/setup.php
+## Add
+$CONF['setup_password'] = 'hash_here';
+#to /var/www/admin/config.local.php
+rm -rf /var/www/admin/public/setup.php
+rm -rf /var/www/admin/postfixadmin.tgz
