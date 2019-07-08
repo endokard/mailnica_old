@@ -1,0 +1,16 @@
+#create table postfixadmin
+mysql -u root -p
+
+CREATE DATABASE postfixadmin;
+GRANT ALL PRIVILEGES ON postfixadmin.* TO 'postfixadmin'@'localhost' IDENTIFIED BY 'my_password';
+FLUSH PRIVILEGES;
+\q
+
+#postfix-admin
+mkdir /var/www/admin
+wget -O /var/www/admin/postfixadmin.tgz https://github.com/postfixadmin/postfixadmin/archive/postfixadmin-3.2.tar.gz
+tar -zxvf /var/www/admin/postfixadmin.tgz -C /var/www/admin --strip-components=1
+mkdir -p /var/www/admin/templates_c
+chown -R apache /var/www/admin/templates_c
+##create /srv/postfixadmin/config.local.php
+##configure postfix admin via web
