@@ -13,4 +13,4 @@ postconf myorigin = $mydomain
 postconf inet_interfaces = all
 postconf inet_protocols = all
 postconf mydestination = $myhostname, localhost.$mydomain, localhost, $mydomain
-postconf mynetworks = 192.168.1.0/24, 127.0.0.0/8
+postconf mynetworks = 127.0.0.0/8
