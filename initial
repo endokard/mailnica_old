@@ -28,17 +28,10 @@ systemctl start mariadb
 systemctl enable mariadb
 mysql_secure_installation
 
-#create table postfixadmin
-mysql -u root -p
+#postfixadmin
 
-CREATE DATABASE postfixadmin;
-GRANT ALL PRIVILEGES ON postfixadmin.* TO 'postfixadmin'@'localhost' IDENTIFIED BY 'my_password';
-FLUSH PRIVILEGES;
-\q
+#postfix
 
-#postfix-admin
- mkdir /var/www/admin
- wget -O /var/www/admin/postfixadmin.tgz https://github.com/postfixadmin/postfixadmin/archive/postfixadmin-3.2.tar.gz
- tar -zxvf /var/www/admin/postfixadmin.tgz -C /var/www/admin --strip-components=1
+#dovecot
 
 #certbot
