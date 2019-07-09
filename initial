@@ -20,7 +20,9 @@ yum install yum-utils -y
 yum-config-manager --enable remi-php73
 yum install php php-mcrypt php-cli php-gd php-curl php-mysql php-ldap php-zip php-fileinfo php-opcache php-odbc php-pdo php-pear php-pecl-apc php-pecl-memcache php-pgsql php-soap php-xml php-xmlrpc php-imap php-mbstring php-common
 
-#php-FM
+#php-FM - ??
+#PostgresSQL ?
+#Ngix ?
 
 #databse
 yum install mariadb mariadb-server -y
