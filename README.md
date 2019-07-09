@@ -1,2 +1,2 @@
 # mailnica
-Free and secure enterprise mail gateway
+Free and secure enterprise grade mail gateway
