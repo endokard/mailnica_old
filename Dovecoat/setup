@@ -7,6 +7,7 @@ cp /etc/dovecot/conf.d/auth-sql.conf.ext /etc/dovecot/conf.d/auth-sql.conf.ext.b
 cp /etc/dovecot/conf.d/10-master.conf /etc/dovecot/conf.d/10-master.conf.bak
 cp /etc/dovecot/conf.d/10-ssl.conf /etc/dovecot/conf.d/10-ssl.conf.bak
 
-groupadd -g 5000 vmail
-useradd -g vmail -u 5000 vmail -d /var/mail
-
+useradd -r -u 150 -g mail -d /var/vmail -s /sbin/nologin -c "Virtual Mail User" vmail
+mkdir -p /var/vmail
+chmod -R 770 /var/vmail
+chown -R vmail:mail /var/vmail
