@@ -5,6 +5,7 @@ systemctl disable sendmail
 systemctl enable postfix
 
 cp /etc/postfix/main.cf /etc/postfix/main.cf.bak
+cp /etc/postfix/master.cf /etc/postfix/master.cf.bak
 
 #echo "" > main.cf
 #postconf -e "myhostname = $(hostname -f)"
