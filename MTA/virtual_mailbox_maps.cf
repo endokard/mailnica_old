@@ -1,0 +1,6 @@
+#/etc/postfix/virtual_mailbox_maps.cf
+user = postfixadmin
+password = my_pass
+hosts = localhost
+dbname = postfixadmin
+query = SELECT maildir FROM mailbox WHERE username='%s' AND active = true
