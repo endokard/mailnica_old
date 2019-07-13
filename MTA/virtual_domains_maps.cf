@@ -1,0 +1,8 @@
+#/etc/postfix/virtual_domains_maps.cf
+user = postfixadmin
+password = my_pass
+hosts = localhost
+dbname = postfixadmin
+#query = SELECT domain FROM domain WHERE domain='%s'
+#optional query to use when relaying for backup MX
+query = SELECT domain FROM domain WHERE domain='%s' and backupmx = false and active = true
