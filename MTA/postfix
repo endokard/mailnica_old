@@ -3,13 +3,13 @@ yum install postfix
 systemctl stop sendmail
 systemctl disable sendmail
 systemctl enable postfix
-#
-cp main.cf main.cf.bak
+
+cp /etc/postfix/main.cf /etc/postfix/main.cf.bak
+
 #echo "" > main.cf
-postconf -e "myhostname = $(hostname -f)"
- 
-postconf -e "virtual_alias_maps = proxy:mysql:/etc/postfix/sql/mysql_virtual_alias_maps.cf, proxy:mysql:/etc/postfix/sql/mysql_virtual_alias_domain_maps.cf, proxy:mysql:/etc/postfix/sql/mysql_virtual_alias_domain_catchall_maps.cf"
-postconf -e "virtual_mailbox_maps = proxy:mysql:/etc/postfix/sql/mysql_virtual_mailbox_maps.cf, proxy:mysql:/etc/postfix/sql/mysql_virtual_alias_domain_mailbox_maps.cf"
+#postconf -e "myhostname = $(hostname -f)"
+#postconf -e "virtual_alias_maps = proxy:mysql:/etc/postfix/sql/mysql_virtual_alias_maps.cf, proxy:mysql:/etc/postfix/sql/mysql_virtual_alias_domain_maps.cf, proxy:mysql:/etc/postfix/sql/mysql_virtual_alias_domain_catchall_maps.cf"
+#postconf -e "virtual_mailbox_maps = proxy:mysql:/etc/postfix/sql/mysql_virtual_mailbox_maps.cf, proxy:mysql:/etc/postfix/sql/mysql_virtual_alias_domain_mailbox_maps.cf"
 
 ##############################################
 postconf -e "myorigin = $mydomain"
