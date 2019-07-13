@@ -7,3 +7,6 @@ cp /etc/dovecot/conf.d/auth-sql.conf.ext /etc/dovecot/conf.d/auth-sql.conf.ext.b
 cp /etc/dovecot/conf.d/10-master.conf /etc/dovecot/conf.d/10-master.conf.bak
 cp /etc/dovecot/conf.d/10-ssl.conf /etc/dovecot/conf.d/10-ssl.conf.bak
 
+groupadd -g 5000 vmail
+useradd -g vmail -u 5000 vmail -d /var/mail
+
