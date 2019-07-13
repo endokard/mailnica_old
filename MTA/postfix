@@ -16,6 +16,7 @@ postconf -e "myorigin = $mydomain"
 postconf -e "mydomain = mailnica.com"
 postconf -e "myhostname = mx.mailnica.com"
 postconf -e "mynetworks = 127.0.0.0/8"
+###postconf -e "mynetworks = 0.0.0.0"
 postconf -e "inet_protocols = ipv4"
 postconf -e "inet_interfaces = all"
 postconf -e "mydestination = localhost"
@@ -35,8 +36,10 @@ postconf -e "smtpd_sasl_auth_enable = yes"
 postconf -e "smtpd_sasl_authenticated_header = yes"
 postconf -e "smtpd_sasl_security_options = noanonymous"
 postconf -e "broken_sasl_auth_clients = yes"
+###???
 postconf -e "smtpd_recipient_restrictions = permit_sasl_authenticated, permit_mynetworks, reject_unauth_destination"
 
+#Not added
 #TLS support
 postconf -e "smtpd_tls_cert_file = /etc/pki/tls/certs/localhost.crt"
 postconf -e "smtpd_tls_key_file = /etc/pki/tls/private/localhost.key"
