@@ -1,0 +1,6 @@
+#/etc/postfix/virtual_mailbox_limits.cf
+user = postfixadmin
+password = my_pass
+hosts = localhost
+dbname = postfixadmin
+query = SELECT quota FROM mailbox WHERE username='%s'
