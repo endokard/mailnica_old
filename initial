@@ -37,3 +37,28 @@ mysql_secure_installation
 #dovecot
 
 #certbot
+yum install certbot python2-certbot-apache
+mkdir -p /var/www/mailnica.com/public_html
+chmod -R 755 /var/www/mailnica.com/
+chmod -R 755 /var/www/mailnica.com/public_html/
+chown -R apache:apache /var/www/mailnica.com/public_html
+chown -R apache:apache /var/www/mailnica.com/
+
+mcedit /etc/httpd/mailnica.com.conf
+<VirtualHost *:80>
+    ServerName www.mailnica.com
+    ServerAlias mailnica.com
+    DocumentRoot /var/www/yourdomain.com/public_html
+    ErrorLog /var/www/yourdomain.com/error.log
+    CustomLog /var/www/yourdomain.com/requests.log combined
+</VirtualHost>
+
+systemctl restart httpd
+
+certbot --apache -d mailnica.com
+echo "0 0,12 * * * root python -c 'import random; import time; time.sleep(random.random() * 3600)' && certbot renew" | sudo tee -a /etc/crontab > /dev/null
+#59 18 * * * cd /etc/letsencrypt/ && ./certbot-auto renew --force-renew && /etc/init.d/apache2 restart
+
+
+
+
