@@ -5,12 +5,40 @@ systemctl disable sendmail
 systemctl enable postfix
 #
 cp main.cf main.cf.bak
-echo "" > main.cf
-postconf myhostname = mx.mailnica.com
-postconf mydomain = mailnica.com
-postconf smtpd_banner = $myhostname ESMTP
-postconf myorigin = $mydomain
-postconf inet_interfaces = all
-postconf inet_protocols = all
-postconf mydestination = $myhostname, localhost.$mydomain, localhost, $mydomain
-postconf mynetworks = 127.0.0.0/8
+#echo "" > main.cf
+postconf -e "myhostname = $(hostname -f)"
+ 
+postconf -e "virtual_alias_maps = proxy:mysql:/etc/postfix/sql/mysql_virtual_alias_maps.cf, proxy:mysql:/etc/postfix/sql/mysql_virtual_alias_domain_maps.cf, proxy:mysql:/etc/postfix/sql/mysql_virtual_alias_domain_catchall_maps.cf"
+postconf -e "virtual_mailbox_maps = proxy:mysql:/etc/postfix/sql/mysql_virtual_mailbox_maps.cf, proxy:mysql:/etc/postfix/sql/mysql_virtual_alias_domain_mailbox_maps.cf"
+
+##############################################
+postconf -e "myorigin = $mydomain"
+postconf -e "mydomain = mailnica.com"
+postconf -e "myhostname = mx.mailnica.com"
+postconf -e "mynetworks = 127.0.0.0/8"
+postconf -e "inet_protocols = ipv4"
+postconf -e "inet_interfaces = all"
+postconf -e "mydestination = localhost"
+postconf -e "smtpd_banner = $myhostname ESMTP"
+postconf -e "virtual_transport = lmtp:unix:private/dovecot-lmtp"
+
+postconf -e "relay_domains = $mydestination, proxy:mysql:/etc/postfix/relay_domains.cf"
+postconf -e "virtual_mailbox_domains = proxy:mysql:/etc/postfix/virtual_domains_maps.cf"
+postconf -e "virtual_mailbox_limit = proxy:mysql:/etc/postfix/virtual_mailbox_limits.cf"
+postconf -e "virtual_alias_maps = proxy:mysql:/etc/postfix/virtual_alias_maps.cf"
+postconf -e "virtual_mailbox_maps = proxy:mysql:/etc/postfix/virtual_mailbox_maps.cf"
+
+#SASL support
+postconf -e "smtpd_sasl_type = dovecot"
+postconf -e "smtpd_sasl_path = private/auth"
+postconf -e "smtpd_sasl_auth_enable = yes"
+postconf -e "smtpd_sasl_authenticated_header = yes"
+postconf -e "smtpd_sasl_security_options = noanonymous"
+postconf -e "broken_sasl_auth_clients = yes"
+postconf -e "smtpd_recipient_restrictions = permit_sasl_authenticated, permit_mynetworks, reject_unauth_destination"
+
+#TLS support
+postconf -e "smtpd_tls_cert_file = /etc/pki/tls/certs/localhost.crt"
+postconf -e "smtpd_tls_key_file = /etc/pki/tls/private/localhost.key"
+postconf -e "smtpd_use_tls = yes"
+postconf -e "smtpd_tls_auth_only = yes"
