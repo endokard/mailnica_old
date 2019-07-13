@@ -42,10 +42,31 @@ postconf -e "smtpd_recipient_restrictions = permit_sasl_authenticated, permit_my
 
 #Not added
 #TLS support
-postconf -e "smtpd_tls_cert_file = /etc/pki/tls/certs/localhost.crt"
-postconf -e "smtpd_tls_key_file = /etc/pki/tls/private/localhost.key"
-postconf -e "smtpd_use_tls = yes"
+postconf -e "smtpd_tls_cert_file=/etc/letsencrypt/live/example.com/fullchain.pem"
+postconf -e "smtpd_tls_key_file=/etc/letsencrypt/live/example.com/privkey.pem"
+postconf -e "smtpd_use_tls=yes"
 postconf -e "smtpd_tls_auth_only = yes"
+postconf -e "smtp_tls_security_level = may"
+postconf -e "smtpd_tls_security_level = may"
+postconf -e "smtpd_sasl_security_options = noanonymous, noplaintext"
+postconf -e "smtpd_sasl_tls_security_options = noanonymous"
+postconf -e "smtpd_tls_session_cache_timeout = 3600s"
+postconf -e "tls_random_source = dev:/dev/urandom"
+
+message_size_limit = 20000000
+smtpd_soft_error_limit = 10
+smtpd_hard_error_limit = 15
+smtpd_error_sleep_time = 20
+anvil_rate_time_unit = 60s
+smtpd_client_connection_count_limit = 20
+smtpd_client_connection_rate_limit = 30
+smtpd_client_message_rate_limit = 30
+smtpd_client_event_limit_exceptions = 127.0.0.0/8
+smtpd_client_connection_limit_exceptions = 127.0.0.0/8
+
+maximal_queue_lifetime = 1d
+bounce_queue_lifetime = 1d
+
 
 ################Problems
 #postconf -e "relay_domains = $mydestination, proxy:mysql:/etc/postfix/relay_domains.cf" - without  $mydestination in conf file
