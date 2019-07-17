@@ -22,3 +22,6 @@ firewall-cmd --zone=public --add-rich-rule='
   port protocol="tcp" port="8080" accept'
   
 firewall-cmd --runtime-to-permanent
+
+#block IPs
+#firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='210.212.233.43' reject"
