@@ -53,6 +53,14 @@ mcedit /etc/httpd/mailnica.com.conf
     CustomLog /var/www/yourdomain.com/requests.log combined
 </VirtualHost>
 
+mkdir -p /var/www/admin.mailnica.com/public_html/
+mkdir -p /var/www/webmail.mailnica.com/public_html
+chown -R apache:apache /var/www/admin.mailnica.com/
+chown -R apache:apache /var/www/webmail.mailnica.com/
+
+certbot --apache -d webmail.mailnica.com
+certbot --admin -d webmail.mailnica.com
+
 systemctl restart httpd
 
 certbot --apache -d mailnica.com
