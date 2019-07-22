@@ -59,7 +59,7 @@ chown -R apache:apache /var/www/admin.mailnica.com/
 chown -R apache:apache /var/www/webmail.mailnica.com/
 
 certbot --apache -d webmail.mailnica.com
-certbot --admin -d webmail.mailnica.com
+certbot --apache -d webmail.mailnica.com
 
 systemctl restart httpd
 
