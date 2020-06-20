@@ -1,8 +1,7 @@
-yum uprade
-yum update
+dnf update
 #
-useradd XXXX
-passwd XXX new_pass
+useradd NEW_USER
+passwd NEW_USER new_pass
 
 #firewall
 
