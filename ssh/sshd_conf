@@ -1,3 +1,8 @@
-PermitRootLogin no
 Port 2222
+
+PermitRootLogin no
+
+AllowTcpForwarding no
+X11Forwarding no
+
 Banner /etc/ssh/sshd-banner
