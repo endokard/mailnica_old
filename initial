@@ -3,10 +3,11 @@ dnf update
 useradd NEW_USER
 passwd NEW_USER new_pass
 
-#firewall
-
 #ensyre chrony is started
-#systemctl status -l chronyd
+systemctl status -l chronyd
+
+#firewall
+#ssh
 
 #apache
 yum -y install httpd httpd-tools mod_ssl
