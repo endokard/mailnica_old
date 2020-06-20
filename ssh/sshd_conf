@@ -5,4 +5,4 @@ PermitRootLogin no
 AllowTcpForwarding no
 X11Forwarding no
 
-Banner /etc/ssh/sshd-banner
+Banner /etc/ssh/sshd_banner
