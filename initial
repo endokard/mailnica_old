@@ -7,7 +7,7 @@ passwd NEW_USER new_pass
 systemctl status -l chronyd
 
 #firewall
-#ssh
+#ssh (create /etc/ssh/sshd_banner, edit /etc/ssh/sshd_config, systemctl restart sshd)
 
 #apache
 yum -y install httpd httpd-tools mod_ssl
