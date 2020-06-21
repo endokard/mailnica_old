@@ -33,7 +33,7 @@ echo "Disble root login (y/n). Default - yes."
 read disable_rl
 echo "Disable forwarding (y/n)? Default - yes."
 read disable_pf
-echo "configuring SSH, default config file will be saved in /etc/ssh/sshd_config.back"
+echo "Configuring SSH, default config file will be saved in /etc/ssh/sshd_config.back"
 cp /etc/ssh/sshd_config /etc/ssh/sshd_config.back
 
    if [[ $ssh_port != 22 ]];
