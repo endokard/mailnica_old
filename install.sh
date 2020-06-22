@@ -78,8 +78,18 @@ read yn_fw
       firewall-cmd --zone=public --add-service=smtp-submission
    fi
 
+echo " "
+echo "Let's install some software. We will add Remi and EPEL repos for PHP 7.4 and install it with some modules."
+echo "Is it OK (y/n)? Default - yes."
+read yn_php 
 
-
+   if [[ $yn_php == "y" ]] || [[ $yn_php == "" ]];
+     then
+      dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm -y
+      dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y
+      dnf module enable php:remi-7.4 -y
+      dnf install php php-fpm php-common php-curl php-mbstring php-xmlrpc php-mysqlnd php-gd php-xml php-intl php-json php-cli php-pear php-mcrypt php-ldap php-zip php-fileinfo php-opcache php-odbc php-pdo php-pecl-apc php-pecl-memcache php-pgsql php-soap php-imap php-pspell php-imagick dovecot-pigeonhole -y
+   fi
 
 #(re)start and enablle servies
 #
