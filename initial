@@ -9,7 +9,16 @@ systemctl status -l chronyd
 #firewall
 #ssh (create /etc/ssh/sshd_banner, edit /etc/ssh/sshd_config, systemctl restart sshd)
 
+#add repos for php 7.4
+dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm
+dnf module enable php:remi-7.4
+
+dnf install php php-fpm php-common php-curl php-mbstring php-xmlrpc php-mysqlnd php-gd php-xml php-intl php-json php-cli php-pear php-mcrypt php-ldap php-zip php-fileinfo php-opcache php-odbc php-pdo php-pecl-apc php-pecl-memcache php-pgsql php-soap php-imap php-pspell php-imagick dovecot-pigeonhole -y
+
 #####OK, let's try to do it with nginx
+
+
 
 
 
