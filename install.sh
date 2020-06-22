@@ -53,15 +53,40 @@ cp /etc/ssh/sshd_config /etc/ssh/sshd_config.back
       fi
 
 
-#echo " "
-#echo "Do you wish to configure firewall (y/n)? We recommend to restrict SSH access to this machine. Default - yes."
-#read yn_fw
-#   if [[ $yn_fw == "n" ]] || [[ $yn_fw == "" ]];
-#     then
-#      echo ""
-#      echo "Plase specify your network or IP adress e.g. 165.154.123.0/24."
-#      read networka
-#      echo "adding rules"
+echo " "
+echo "Do you wish to configure firewall (y/n)? Default - yes."
+read yn_fw
+   if [[ $yn_fw == "y" ]] || [[ $yn_fw == "" ]];
+     then
+      echo ""
+      echo "Let's allow ssh access only from trusted network. Plase specify your network or IP adress e.g. 165.154.123.0/24."
+      read networka
+      echo "starting fw"
+      systemctl start firewalld
+      echo "adding SSH rules"
+      firewall-cmd --zone=public --add-rich-rule='rule family="ipv4" source address="'$networka'" port protocol="tcp" port="2222" accept'
+      echo " "
+      echo "Now we will add some rules to enable mail service"
+      firewall-cmd --zone=public --add-service=https
+      firewall-cmd --zone=public --add-service=http
+      firewall-cmd --zone=public --add-service=smtp
+      firewall-cmd --zone=public --add-service=smtps
+      firewall-cmd --zone=public --add-service=pop3
+      firewall-cmd --zone=public --add-service=pop3s
+      firewall-cmd --zone=public --add-service=imap
+      firewall-cmd --zone=public --add-service=imaps
+      firewall-cmd --zone=public --add-service=smtp-submission
+   fi
+
+
+
+
+#(re)start and enablle servies
+#
+#systemctl restart sshd
+#firewall-cmd --runtime-to-permanent
+#systemctl enable firewalld
+
 
 #
 #(re)start and enablle servies
