@@ -91,6 +91,12 @@ read yn_php
       dnf install php php-fpm php-common php-curl php-mbstring php-xmlrpc php-mysqlnd php-gd php-xml php-intl php-json php-cli php-pear php-mcrypt php-ldap php-zip php-fileinfo php-opcache php-odbc php-pdo php-pecl-apc php-pecl-memcache php-pgsql php-soap php-imap php-pspell php-imagick dovecot-pigeonhole -y
    fi
 
+echo " "
+echo "Let's install MariaDB server"
+echo " "
+dnf install mariadb-server -y
+
+
 #(re)start and enablle servies
 #
 #systemctl restart sshd
