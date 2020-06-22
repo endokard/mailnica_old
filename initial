@@ -20,6 +20,9 @@ dnf install mariadb-server
 systemctl start mariadb
 systemctl enable mariadb
 mysql_secure_installation
+
+#OK MariDB installed, DB, users and etc. will appear later
+
 ##################
 
 
