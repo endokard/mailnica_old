@@ -96,6 +96,11 @@ echo "Let's install MariaDB server"
 echo " "
 dnf install mariadb-server -y
 systemctl start mariadb
+echo " "
+echo "Now let's secure MariDB installation"
+echo "Please set MariaDB root password and store it."
+echo "Remove anonymous user, disallow root login remotely, remove test database and flush pivileges (Y,Y,Y,Y)"
+mysql_secure_installation
 
 #(re)start and enablle servies
 #
