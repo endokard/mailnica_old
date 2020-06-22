@@ -17,6 +17,9 @@ dnf module enable php:remi-7.4
 dnf install php php-fpm php-common php-curl php-mbstring php-xmlrpc php-mysqlnd php-gd php-xml php-intl php-json php-cli php-pear php-mcrypt php-ldap php-zip php-fileinfo php-opcache php-odbc php-pdo php-pecl-apc php-pecl-memcache php-pgsql php-soap php-imap php-pspell php-imagick dovecot-pigeonhole -y
 
 dnf install mariadb-server
+systemctl start mariadb
+systemctl enable mariadb
+mysql_secure_installation
 ##################
 
 
