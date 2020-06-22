@@ -9,6 +9,11 @@ systemctl status -l chronyd
 #firewall
 #ssh (create /etc/ssh/sshd_banner, edit /etc/ssh/sshd_config, systemctl restart sshd)
 
+#####OK, let's try to do it with nginx
+
+
+
+
 #apache
 yum -y install httpd httpd-tools mod_ssl
 systemctl enable httpd
