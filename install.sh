@@ -95,13 +95,15 @@ echo " "
 echo "Let's install MariaDB server"
 echo " "
 dnf install mariadb-server -y
-
+systemctl start mariadb
 
 #(re)start and enablle servies
 #
 #systemctl restart sshd
 #firewall-cmd --runtime-to-permanent
 #systemctl enable firewalld
+#systemctl enable mariadb
+
 
 
 #
