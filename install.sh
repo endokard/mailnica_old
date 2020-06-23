@@ -129,7 +129,6 @@ postconf -e "smtpd_banner = \$myhostname ESMTP"
 systemctl stop sendmail
 systemctl disable sendmail
 
-systemctl start postfix
 
 #(re)start and enablle servies
 #
@@ -138,12 +137,7 @@ systemctl start postfix
 #systemctl enable firewalld
 #systemctl enable mariadb
 #systemctl enable postfix
-
-
-#
-#(re)start and enablle servies
-#
-#systemctl restart sshd
+#systemctl start postfix
 
 #installation summary
 echo "Installation finished successfully"
