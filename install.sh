@@ -69,7 +69,8 @@ read yn_fw
            ssh_port=22 
           fi
       
-      firewall-cmd --zone=public --add-rich-rule='rule family="ipv4" source address="'$networka'" port protocol="tcp" port="'$ssh_port'" accept'   
+      firewall-cmd --zone=public --add-rich-rule='rule family="ipv4" source address="'$networka'" port protocol="tcp" port="'$ssh_port'" accept'
+      firewall-cmd --zone=public --add-rich-rule='rule family="ipv4" source address="'$networka'" port protocol="tcp" port="8080" accept'   
       echo " "
       echo "Now we will add some rules to enable mail service"
       firewall-cmd --zone=public --add-service=https
@@ -133,6 +134,12 @@ postconf -e "smtpd_banner = \$myhostname ESMTP"
 
 systemctl stop sendmail
 systemctl disable sendmail
+
+#Nginx
+echo " "
+echo "Let's configure Nginx http server"
+echo " "
+dnf install nginx -y
 
 
 #(re)start and enablle servies
