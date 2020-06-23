@@ -63,8 +63,13 @@ read yn_fw
       read networka
       echo "starting fw"
       systemctl start firewalld
-      echo "adding SSH rules"
-      firewall-cmd --zone=public --add-rich-rule='rule family="ipv4" source address="'$networka'" port protocol="tcp" port="'$ssh_port'" accept'
+         
+         if [[ $ssh_port == "" ]];
+          then
+           ssh_port=22 
+          fi
+      
+      firewall-cmd --zone=public --add-rich-rule='rule family="ipv4" source address="'$networka'" port protocol="tcp" port="'$ssh_port'" accept'   
       echo " "
       echo "Now we will add some rules to enable mail service"
       firewall-cmd --zone=public --add-service=https
