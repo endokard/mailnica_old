@@ -111,6 +111,9 @@ read domain_name
 echo "OK, installing postfix..."
 dnf instal postfix -y
 
+cp /etc/postfix/main.cf /etc/postfix/main.cf.bak
+cp /etc/postfix/master.cf /etc/postfix/master.cf.bak
+
 postconf -e "inet_interfaces = all"
 postconf -e "myhostname = $host_name.$domain_name"
 postconf -e "mydomain = $domain_name"
@@ -120,6 +123,9 @@ postconf -e message_size_limit=26214400
 postconf -e mailbox_size_limit=0
 postconf -e "inet_protocols = ipv4"
 postconf -e "smtp_address_preference = ipv4"
+
+systemctl stop sendmail
+systemctl disable sendmail
 
 systemctl start postfix
 
