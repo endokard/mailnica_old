@@ -111,6 +111,17 @@ read domain_name
 echo "OK, installing postfix..."
 dnf instal postfix -y
 
+postconf -e "inet_interfaces = all"
+postconf -e "myhostname = $host_name.$domain_name"
+postconf -e "mydomain = $domain_name"
+postconf -e "myorigin = $domain_name"
+postconf -e "mydestination = yourdomain.com, \$myhostname, localhost.\$mydomain, localhost"
+postconf -e message_size_limit=26214400
+postconf -e mailbox_size_limit=0
+postconf -e "inet_protocols = ipv4"
+postconf -e "smtp_address_preference = ipv4"
+
+systemctl start postfix
 
 #(re)start and enablle servies
 #
@@ -118,7 +129,7 @@ dnf instal postfix -y
 #firewall-cmd --runtime-to-permanent
 #systemctl enable firewalld
 #systemctl enable mariadb
-
+#systemctl enable postfix
 
 
 #
