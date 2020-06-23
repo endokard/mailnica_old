@@ -1,5 +1,5 @@
 # mailnica
-Free and secure enterprise grade mail gateway.
+Free and secure open source mail server.
 You can host it on your own server or register a free e-mail on our secure server.
 Main idea of this project - privacy respecting, free, ad-free, community driven e-mail server.
 Everyone is welcome to contribute, test, develop and donate.
