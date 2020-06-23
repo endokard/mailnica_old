@@ -124,6 +124,8 @@ postconf -e mailbox_size_limit=0
 postconf -e "inet_protocols = ipv4"
 postconf -e "smtp_address_preference = ipv4"
 
+postconf -e "smtpd_banner = $myhostname ESMTP"
+
 systemctl stop sendmail
 systemctl disable sendmail
 
