@@ -102,6 +102,16 @@ echo "Please set MariaDB root password and store it."
 echo "Remove anonymous user, disallow root login remotely, remove test database and flush pivileges (Y,Y,Y,Y)"
 mysql_secure_installation
 
+echo " "
+echo "Let's install and configure Postfix MTA."
+echo "PLease provide your hostname (e.g. mail):"
+read host_name
+echo "Please provide your domain name (e.g. mailnica.com):"
+read domain_name
+echo "OK, installing postfix..."
+dnf instal postfix -y
+
+
 #(re)start and enablle servies
 #
 #systemctl restart sshd
