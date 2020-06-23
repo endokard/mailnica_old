@@ -131,13 +131,13 @@ systemctl disable sendmail
 
 
 #(re)start and enablle servies
-#
-#systemctl restart sshd
-#firewall-cmd --runtime-to-permanent
-#systemctl enable firewalld
-#systemctl enable mariadb
-#systemctl enable postfix
-#systemctl start postfix
+
+systemctl restart sshd
+firewall-cmd --runtime-to-permanent
+systemctl enable firewalld
+systemctl enable mariadb
+systemctl enable postfix
+systemctl start postfix
 
 #installation summary
 echo "Installation finished successfully"
