@@ -104,12 +104,12 @@ mysql_secure_installation
 
 echo " "
 echo "Let's install and configure Postfix MTA."
-echo "PLease provide your hostname (e.g. mail):"
+echo "Please provide your hostname (e.g. mail):"
 read host_name
 echo "Please provide your domain name (e.g. mailnica.com):"
 read domain_name
 echo "OK, installing postfix..."
-dnf instal postfix -y
+dnf install postfix -y
 
 cp /etc/postfix/main.cf /etc/postfix/main.cf.bak
 cp /etc/postfix/master.cf /etc/postfix/master.cf.bak
@@ -124,7 +124,7 @@ postconf -e mailbox_size_limit=0
 postconf -e "inet_protocols = ipv4"
 postconf -e "smtp_address_preference = ipv4"
 
-postconf -e "smtpd_banner = $myhostname ESMTP"
+postconf -e "smtpd_banner = \$myhostname ESMTP"
 
 systemctl stop sendmail
 systemctl disable sendmail
