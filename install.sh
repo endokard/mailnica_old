@@ -152,11 +152,11 @@ systemctl enable postfix
 systemctl start postfix
 
 #installation summary
-echo "Installation finished successfully"
-echo "We recomend you to work as user $usern and if you need to perform some root actions - use su command, e.g. su ls"
-echo " "
-echo "You can access this serwer from network $networka , you can add more networks using command:"
-echo "firewall-cmd --zone=public --add-rich-rule="
-echo "'rule family="ipv4""
-echo "source address="87.226.0.0/17" port protocol="tcp" port="2222" accept'"
+#echo "Installation finished successfully"
+#echo "We recomend you to work as user $usern and if you need to perform some root actions - use su command, e.g. su ls"
+#echo " "
+#echo "You can access this serwer from network $networka , you can add more networks using command:"
+#echo "firewall-cmd --zone=public --add-rich-rule="
+#echo "'rule family="ipv4""
+#echo "source address="87.226.0.0/17" port protocol="tcp" port="2222" accept'"
 
